@@ -39,17 +39,17 @@ public class ObatModel implements Serializable{
 	private String nomorRegistrasi; //unique
 	
 	@NotNull
-	@Size(max = 50)
+	@Size(max = 255)
 	@Column(name="nama", nullable = false)
 	private String namaObat;
 	
 	@NotNull
-	@Size(max = 10)
+	@Size(max = 255)
 	@Column(name= "kode", nullable = false)
 	private String kodeObat; //unique
 	
 	@NotNull
-	@Size(max = 10)
+	@Size(max = 255)
 	@Column(name= "bentuk", nullable = false)
 	private String bentukObat;
 	
