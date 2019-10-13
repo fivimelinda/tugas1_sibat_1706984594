@@ -23,7 +23,7 @@ public class GudangModel implements Serializable {
 	@Id
 	@Size(max = 20)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private BigInteger idGudang;
+	private Long idGudang;
 	
 	@NotNull
 	@Size(max = 255)
@@ -38,11 +38,11 @@ public class GudangModel implements Serializable {
 	@OneToMany(mappedBy = "gudang", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<GudangObatModel> listGudangObat;
 
-	public BigInteger getIdGudang() {
+	public Long getIdGudang() {
 		return idGudang;
 	}
 
-	public void setIdGudang(BigInteger idGudang) {
+	public void setIdGudang(Long idGudang) {
 		this.idGudang = idGudang;
 	}
 

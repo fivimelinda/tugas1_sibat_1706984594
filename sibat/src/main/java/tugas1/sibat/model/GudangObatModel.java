@@ -27,7 +27,7 @@ public class GudangObatModel implements Serializable{
 	@Id
 	@Size(max = 20)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private BigInteger idGudangObat;
+	private Long idGudangObat;
 	
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "id_obat", referencedColumnName= "idObat", nullable = false)
@@ -41,11 +41,11 @@ public class GudangObatModel implements Serializable{
 	@JsonIgnore
 	private GudangModel gudang;
 
-	public BigInteger getIdGudangObat() {
+	public Long getIdGudangObat() {
 		return idGudangObat;
 	}
 
-	public void setIdGudangObat(BigInteger idGudangObat) {
+	public void setIdGudangObat(Long idGudangObat) {
 		this.idGudangObat = idGudangObat;
 	}
 

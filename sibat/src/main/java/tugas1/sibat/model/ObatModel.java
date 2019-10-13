@@ -22,8 +22,9 @@ import javax.validation.constraints.Size;
 public class ObatModel implements Serializable{
 	//Obat punya KODE blabla
 	@Id
+	@Size(max = 20)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private BigInteger idObat;
+	private Long idObat;
 	
 	@NotNull
 	@Size(max = 255)
@@ -59,7 +60,11 @@ public class ObatModel implements Serializable{
 	@OneToMany(mappedBy = "obat", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<ObatSupplierModel> listObatSupplier;
 
-	public void setIdObat(BigInteger idObat) {
+	public Long getIdObat() {
+		return idObat;
+	}
+	
+	public void setIdObat(Long idObat) {
 		this.idObat = idObat;
 	}
 
@@ -119,8 +124,6 @@ public class ObatModel implements Serializable{
 		this.listGudangObat = listGudangObat;
 	}
 
-	public BigInteger getIdObat() {
-		return idObat;
-	}
+
 	
 }

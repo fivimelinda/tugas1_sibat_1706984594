@@ -26,7 +26,7 @@ public class ObatSupplierModel implements Serializable {
 	@Id
 	@Size(max = 20)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private BigInteger idSupplier;
+	private Long idObatSupplier;
 	
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "id_supplier", referencedColumnName= "idSupplier", nullable = false)
@@ -40,12 +40,12 @@ public class ObatSupplierModel implements Serializable {
 	@JsonIgnore
 	private ObatModel obat;
 
-	public BigInteger getIdSupplier() {
-		return idSupplier;
+	public Long getIdObatSupplier() {
+		return idObatSupplier;
 	}
 
-	public void setIdSupplier(BigInteger idSupplier) {
-		this.idSupplier = idSupplier;
+	public void setIdObatSupplier(Long idObatSupplier) {
+		this.idObatSupplier = idObatSupplier;
 	}
 
 	public SupplierModel getSupplier() {

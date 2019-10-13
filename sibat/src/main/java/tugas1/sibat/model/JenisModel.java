@@ -18,7 +18,7 @@ public class JenisModel implements Serializable{
 	@Id
 	@Size(max = 20)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private BigInteger idJenis;
+	private Long idJenis;
 	
 	@NotNull
 	@Size(max = 255)
@@ -30,11 +30,11 @@ public class JenisModel implements Serializable{
 	@Column(name="deskripsi", nullable = false)
 	private String deskripsi;
 
-	public BigInteger getIdJenis() {
+	public Long getIdJenis() {
 		return idJenis;
 	}
 
-	public void setIdJenis(BigInteger idJenis) {
+	public void setIdJenis(Long idJenis) {
 		this.idJenis = idJenis;
 	}
 

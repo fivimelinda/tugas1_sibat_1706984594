@@ -21,7 +21,7 @@ public class SupplierModel implements Serializable{
 	@Id
 	@Size(max = 20)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private BigInteger idSupplier;
+	private Long idSupplier;
 	
 	@NotNull
 	@Size(max = 255)
@@ -40,11 +40,11 @@ public class SupplierModel implements Serializable{
 	@OneToMany(mappedBy = "supplier", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<ObatSupplierModel> listObatSupplier;
 
-	public BigInteger getIdSupplier() {
+	public Long getIdSupplier() {
 		return idSupplier;
 	}
 
-	public void setIdSupplier(BigInteger idSupplier) {
+	public void setIdSupplier(Long idSupplier) {
 		this.idSupplier = idSupplier;
 	}
 
