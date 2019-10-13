@@ -12,10 +12,17 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="obat")
@@ -33,7 +40,7 @@ public class ObatModel implements Serializable{
 	
 	@NotNull
 	@Size(max = 50)
-	@Column(name="nama_obat", nullable = false)
+	@Column(name="nama", nullable = false)
 	private String namaObat;
 	
 	@NotNull
@@ -51,7 +58,7 @@ public class ObatModel implements Serializable{
 	private Date tanggalTerbit;
 
 	@NotNull
-	@Column(name= "harga_obat", nullable = false)
+	@Column(name= "harga", nullable = false)
 	private Double hargaObat;
 	
 	@OneToMany(mappedBy = "obat", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -59,7 +66,13 @@ public class ObatModel implements Serializable{
 	
 	@OneToMany(mappedBy = "obat", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<ObatSupplierModel> listObatSupplier;
-
+	
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "id_jenis", referencedColumnName= "idJenis", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
+	private JenisModel jenis;
+	
 	public Long getIdObat() {
 		return idObat;
 	}
