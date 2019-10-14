@@ -1,6 +1,5 @@
 package tugas1.sibat.model;
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -25,12 +24,12 @@ public class SupplierModel implements Serializable{
 	
 	@NotNull
 	@Size(max = 255)
-	@Column(name= "nama_supplier", nullable = false)
+	@Column(name= "nama", nullable = false)
 	private String namaSupplier;
 	
 	@NotNull
 	@Size(max = 255)
-	@Column(name= "alamat_supplier", nullable = false)
+	@Column(name= "alamat", nullable = false)
 	private String alamatSupplier;
 	
 	@NotNull

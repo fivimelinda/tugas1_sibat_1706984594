@@ -27,12 +27,13 @@ public class GudangModel implements Serializable {
 	
 	@NotNull
 	@Size(max = 255)
-	@Column(name="nama_gudang", nullable = false)
+	@Column(name="nama", nullable = false)
 	private String namaGudang;
 	
 	@NotNull
 	@Size(max = 255)
-	@Column(name="alamat_gudang", nullable = false)
+	@Column(name="alamat", nullable = false)
+
 	private String alamatGudang;
 	
 	@OneToMany(mappedBy = "gudang", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
