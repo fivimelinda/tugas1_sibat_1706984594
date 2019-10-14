@@ -1,6 +1,5 @@
 package tugas1.sibat.model;
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.CascadeType;

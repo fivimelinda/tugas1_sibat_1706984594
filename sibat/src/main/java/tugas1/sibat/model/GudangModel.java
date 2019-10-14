@@ -33,6 +33,7 @@ public class GudangModel implements Serializable {
 	@NotNull
 	@Size(max = 255)
 	@Column(name="alamat", nullable = false)
+
 	private String alamatGudang;
 	
 	@OneToMany(mappedBy = "gudang", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
