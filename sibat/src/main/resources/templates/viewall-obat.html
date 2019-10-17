@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 	<head>
-		<title>View All Obat</title>
+		<title>Daftar Obat</title>
 		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
 		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 	</head>
 	<body>
 		<nav th:replace="fragments/fragment :: navbar (brand='View All Obat')"></nav>
 		<div class="container-fluid">
-		<h2> Daftar Obat </h2>
 			<table class="table">
 				<thead>
 					<tr>
@@ -20,13 +19,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="obat, iterationStatus : ${listObat}">
+					<tr th:each="obat, iterationStatus : ${obatList}">
 						<td th:text="${iterationStatus.count}"> </td>
-						<td th:text="${obat.kode}"> </td>
-						<td th:text="${obat.nama}"> </td>
-						<td th:text="${obat.harga}"> </td>
+						<td th:text="${obat.kodeObat}"> </td>
+						<td th:text="${obat.namaObat}"> </td>
+						<td th:text="'Rp ' + ${obat.hargaObat}"></td>
 						<td>
-							<button type="submit" class="btn btn-sm" style="background-color: lightseagreen; ">Lihat</button>
+							<button type="submit" class="btn btn-sm" style="background-color: lightseagreen; color: white;">Lihat</button>
 							<button type="submit" class="btn btn-sm" style="background-color: black;  color: white;">Ubah</button>
 							<button type="submit" class="btn btn-sm btn-danger">Hapus</button>
 						</td>
@@ -34,7 +33,7 @@
 				</tbody>
 			</table>
 		<br>
-			<button th:action="@{#}" class="btn btn-sm btn-primary" style="background-color: black;">
+			<button th:action="@{#}" class="btn btn-sm btn-primary" style="background-color: black; border-color: black; float: right;">
 				Tambah Obat
 			</button>
 		</div>
