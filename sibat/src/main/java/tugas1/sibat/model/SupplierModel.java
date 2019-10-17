@@ -49,9 +49,9 @@ public class SupplierModel implements Serializable {
 	
 	@ManyToMany
 	@JoinTable(
-			name= "gudang_obat",
-			joinColumns = @JoinColumn(name = "idObat"),
-			inverseJoinColumns = @JoinColumn(name = "idGudang"))
+			name= "obat_supplier",
+			joinColumns = @JoinColumn(name = "id_supplier"),
+			inverseJoinColumns = @JoinColumn(name = "id_obat"))
 	private List<ObatModel> listObat;
 
 	public Long getIdSupplier() {

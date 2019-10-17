@@ -39,8 +39,8 @@ public class GudangModel implements Serializable {
 	@ManyToMany
 	@JoinTable(
 			name= "gudang_obat",
-			joinColumns = @JoinColumn(name = "idObat"),
-			inverseJoinColumns = @JoinColumn(name = "idGudang"))
+			joinColumns = @JoinColumn(name = "id_gudang"),
+			inverseJoinColumns = @JoinColumn(name = "id_obat"))
 	private List<ObatModel> listObat;
 	
 	public Long getIdGudang() {
