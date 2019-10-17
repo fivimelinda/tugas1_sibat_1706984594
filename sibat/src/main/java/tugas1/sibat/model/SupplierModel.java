@@ -1,5 +1,7 @@
 package tugas1.sibat.model;
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,14 +11,23 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="supplier")
-public class SupplierModel implements Serializable{
+public class SupplierModel implements Serializable {
 	@Id
 	@Size(max = 20)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,15 +45,19 @@ public class SupplierModel implements Serializable{
 	
 	@NotNull
 	@Column(name= "nomor_telepon", nullable = false)
-	private String nomorTelepon;
+	private Long nomorTelepon;
 	
-	@OneToMany(mappedBy = "supplier", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<ObatSupplierModel> listObatSupplier;
+	@ManyToMany
+	@JoinTable(
+			name= "gudang_obat",
+			joinColumns = @JoinColumn(name = "idObat"),
+			inverseJoinColumns = @JoinColumn(name = "idGudang"))
+	private List<ObatModel> listObat;
 
 	public Long getIdSupplier() {
 		return idSupplier;
 	}
-
+	
 	public void setIdSupplier(Long idSupplier) {
 		this.idSupplier = idSupplier;
 	}
@@ -63,11 +78,21 @@ public class SupplierModel implements Serializable{
 		this.alamatSupplier = alamatSupplier;
 	}
 
-	public String getNomorTelepon() {
+	public Long getNomorTelepon() {
 		return nomorTelepon;
 	}
 
-	public void setNomorTelepon(String nomorTelepon) {
+	public void setNomorTelepon(Long nomorTelepon) {
 		this.nomorTelepon = nomorTelepon;
 	}
+
+	public List<ObatModel> getListObat() {
+		return listObat;
+	}
+
+	public void setListObat(List<ObatModel> listObat) {
+		this.listObat = listObat;
+	}
+
+
 }

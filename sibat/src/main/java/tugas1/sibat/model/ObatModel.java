@@ -1,5 +1,4 @@
 package tugas1.sibat.model;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -60,11 +60,11 @@ public class ObatModel implements Serializable{
 	@Column(name= "harga", nullable = false)
 	private Double hargaObat;
 	
-	@OneToMany(mappedBy = "obat", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<GudangObatModel> listGudangObat;
+	@ManyToMany(mappedBy = "listObat")
+	private List<GudangModel> listGudang;
 	
-	@OneToMany(mappedBy = "obat", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<ObatSupplierModel> listObatSupplier;
+	@ManyToMany(mappedBy = "listObat")
+	private List<SupplierModel> listSupplier;
 	
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "id_jenis", referencedColumnName= "idJenis", nullable = false)
@@ -128,14 +128,12 @@ public class ObatModel implements Serializable{
 		this.tanggalTerbit = tanggalTerbit;
 	}
 
-	public List<GudangObatModel> getListGudangObat() {
-		return listGudangObat;
+	public List<GudangModel> getListGudang() {
+		return listGudang;
 	}
 
-	public void setListGudangObat(List<GudangObatModel> listGudangObat) {
-		this.listGudangObat = listGudangObat;
+	public void setListGudang(List<GudangModel> listGudang) {
+		this.listGudang = listGudang;
 	}
 
-
-	
 }
