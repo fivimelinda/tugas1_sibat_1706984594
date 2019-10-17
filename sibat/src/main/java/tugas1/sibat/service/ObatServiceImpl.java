@@ -20,4 +20,9 @@ public class ObatServiceImpl implements ObatService{
 	public List<ObatModel> getObatList(){
 		return obatDb.findAll();
 	}
+	
+	@Override
+	public ObatModel getObatByNomorRegistrasi(String nomorReg) {
+		return obatDb.findByNomorRegistrasi(nomorReg);
+	}
 }

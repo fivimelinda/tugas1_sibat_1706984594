@@ -7,7 +7,7 @@ import tugas1.sibat.model.ObatModel;
 
 @Repository
 public interface ObatDb extends JpaRepository<ObatModel, Long>{
-	
+	ObatModel findByNomorRegistrasi(String nomorReg);
 }
 
 

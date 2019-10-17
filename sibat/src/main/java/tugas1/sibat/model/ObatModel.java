@@ -72,6 +72,22 @@ public class ObatModel implements Serializable{
 	@JsonIgnore
 	private JenisModel jenis;
 	
+	public List<SupplierModel> getListSupplier() {
+		return listSupplier;
+	}
+
+	public void setListSupplier(List<SupplierModel> listSupplier) {
+		this.listSupplier = listSupplier;
+	}
+
+	public JenisModel getJenis() {
+		return jenis;
+	}
+
+	public void setJenis(JenisModel jenis) {
+		this.jenis = jenis;
+	}
+
 	public Long getIdObat() {
 		return idObat;
 	}

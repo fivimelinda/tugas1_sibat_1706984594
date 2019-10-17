@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>View Obat</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
+		<div class="container-fluid col-sm-4">
+            <h2 style="text-align: center;">Detail Data Obat</h2>
+            <p th:text="'Kode ' + ${obat.kodeObat}"></p>
+			<p th:text="'Nama ' + ${obat.namaObat}"></p>
+			<p th:text="'Nomor Registrasi: ' + ${obat.nomorRegistrasi}"></p>
+            <p th:text="'Bentuk ' + ${obat.bentukObat}"></p>
+            <p th:text="'Tanggal Terbit ' + ${obat.tanggalTerbit}"></p>
+			<p th:text="'Harga ' + ${obat.hargaObat}"></p>
+			<p th:text="'Jenis Obat: ' + ${obat.jenis}"></p>
+            <!-- <h3 th:text="'Gudang Tempat Disimpan: ' + ${obat.listGudang}"></h3>
+            <h3 th:text="'Supplier: ' + ${obat.listSupplier}"></h3> -->
+		</div>
+	</body>
+</html>
