@@ -25,7 +25,7 @@
 						<td th:text="${obat.namaObat}"> </td>
 						<td th:text="'Rp ' + ${obat.hargaObat}"></td>
 						<td>
-							<button type="submit" class="btn btn-sm" style="background-color: lightseagreen; color: white;">Lihat</button>
+							<button th:action="@{obat/view/}+${obat.nomorRegistrasi}" type="submit" class="btn btn-sm" style="background-color: lightseagreen; color: white;">Lihat</button>
 							<button type="submit" class="btn btn-sm" style="background-color: black;  color: white;">Ubah</button>
 							<button type="submit" class="btn btn-sm btn-danger">Hapus</button>
 						</td>
