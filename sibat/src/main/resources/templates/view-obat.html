@@ -8,16 +8,65 @@
 	<body>
 		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
 		<div class="container-fluid col-sm-4">
-            <h2 style="text-align: center;">Detail Data Obat</h2>
-            <p th:text="'Kode ' + ${obat.kodeObat}"></p>
-			<p th:text="'Nama ' + ${obat.namaObat}"></p>
-			<p th:text="'Nomor Registrasi: ' + ${obat.nomorRegistrasi}"></p>
-            <p th:text="'Bentuk ' + ${obat.bentukObat}"></p>
-            <p th:text="'Tanggal Terbit ' + ${obat.tanggalTerbit}"></p>
-			<p th:text="'Harga ' + ${obat.hargaObat}"></p>
-			<p th:text="'Jenis Obat: ' + ${obat.jenis}"></p>
-            <!-- <h3 th:text="'Gudang Tempat Disimpan: ' + ${obat.listGudang}"></h3>
-            <h3 th:text="'Supplier: ' + ${obat.listSupplier}"></h3> -->
+			<h2 style="text-align: center;">Detail Data Obat</h2>
+			<div class="row">
+				<div class="col-sm-6">Kode</div>
+				<div class="col-sm-6">
+					<td th:text="${obat.kodeObat}"></td>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Nama</div>
+				<div class="col-sm-6">
+					<td th:text="${obat.namaObat}"></td>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Nomor Registrasi</div>
+				<div class="col-sm-6">
+					<td th:text="${obat.nomorRegistrasi}"></td>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Bentuk</div>
+				<div class="col-sm-6">
+					<td th:text="${obat.bentukObat}"></td>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Tanggal Terbit</div>
+				<div class="col-sm-6">
+					<td th:text="${obat.tanggalTerbit}"></td>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Harga</div>
+				<div class="col-sm-6">
+					<td th:text="'Rp ' + ${obat.hargaObat}"></td>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Jenis Obat</div>
+				<div class="col-sm-6">
+					<td th:text="${obat.jenisObat.getNamaJenis()}"></td>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Gudang Tempat Disimpan</div>
+				<div class="col-sm-6">
+					<tr th:each="gudang, iterationStatus : ${obat.listGudang}">
+					<td th:text="${gudang.getNamaGudang()}"></td>
+					</tr>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Supplier</div>
+				<div class="col-sm-6">
+					<tr th:each="supplier, iterationStatus : ${obat.listSupplier}">
+					<td th:text="${supplier.getNamaSupplier()}"></td>
+					</tr>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
