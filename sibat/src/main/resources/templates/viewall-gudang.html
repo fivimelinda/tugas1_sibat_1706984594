@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>Daftar Obat</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragment :: navbar(brand='SIBAT')"></nav>
+		<div class="container-fluid">
+            <h2 style="text-align: center;">Sistem Informasi Inventory Obat</h2>
+            <div class="col-sm-10 container-fluid">
+            <table class="table">
+				<thead>
+					<tr>
+                        <th>No</th>
+						<th>Nama</th>
+						<th>Alamat</th>
+                        <th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="gudang, iterationStatus : ${gudangList}">
+						<td th:text="${iterationStatus.count}"> </td>
+						<td th:text="${gudang.namaGudang}"> </td>
+						<td th:text="${gudang.alamatGudang}"> </td>
+						<td>
+							<button th:action="@{#}" type="submit" class="btn btn-sm" style="background-color: lightseagreen; color: white;">Lihat</button>
+							<button type="submit" class="btn btn-sm" style="background-color: black;  color: white;">Ubah</button>
+							<button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+						</td>
+					</tr>
+                </tbody>
+            </table>
+			    <button th:action="@{#}" class="btn btn-sm btn-primary" style="background-color: black; border-color: black; float: right;">
+				Tambah Gudang
+			    </button>
+            </div>
+		</div>
+	</body>
+</html>
