@@ -6,8 +6,9 @@
 		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 	</head>
 	<body>
-		<nav th:replace="fragments/fragment :: navbar (brand='Daftar Obat')"></nav>
-		<div class="container-fluid">
+		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
+		<div class="container-fluid col-sm-10">
+			<h3 style="background-color: #343a40; color: white; margin-top: 10px; margin-bottom: 0%; padding: 10px;">Daftar Obat</h3>
 			<table class="table">
 				<thead>
 					<tr>
@@ -32,7 +33,6 @@
 					</tr>
 				</tbody>
 			</table>
-		<br>
 			<button th:action="@{#}" class="btn btn-sm btn-primary" style="background-color: black; border-color: black; float: right;">
 				Tambah Obat
 			</button>
