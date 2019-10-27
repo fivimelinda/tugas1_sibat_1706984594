@@ -26,15 +26,19 @@
 						<td th:text="${obat.namaObat}"> </td>
 						<td th:text="'Rp ' + ${obat.hargaObat}"></td>
 						<td>
-							<button th:action="@{obat/view/}+${obat.nomorRegistrasi}" type="submit" class="btn btn-sm" style="background-color: lightseagreen; color: white;">Lihat</button>
-							<button type="submit" class="btn btn-sm" style="background-color: black;  color: white;">Ubah</button>
+							<button class="btn btn-sm" style="background-color: lightseagreen; color: white; display: inline-block;">
+								<a th:href="@{/obat/view(noReg=${obat.nomorRegistrasi})}" style="color: white;">Lihat</a>
+							</button>
+							<button type="submit" class="btn btn-sm" style="background-color: black;  color: white;">
+								<a th:href="@{/obat/ubah(id=${obat.idObat})}" style="color: white;">Ubah</a>
+							</button>
 							<button type="submit" class="btn btn-sm btn-danger">Hapus</button>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-			<button th:action="@{#}" class="btn btn-sm btn-primary" style="background-color: black; border-color: black; float: right;">
-				Tambah Obat
+			<button class="btn btn-sm btn-primary" style="background-color: black; border-color: black; float: right;">
+				<a th:href="@{/obat/tambah}" style="color: white;">Tambah Obat</a>
 			</button>
 		</div>
 	</body>

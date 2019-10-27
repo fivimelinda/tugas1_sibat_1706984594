@@ -7,18 +7,17 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tugas1.sibat.model.JenisModel;
-import tugas1.sibat.repository.JenisDb;
+import tugas1.sibat.model.SupplierModel;
+import tugas1.sibat.repository.SupplierDb;
 
 @Service
 @Transactional
-public class JenisServiceImpl implements JenisService{
+public class SupplierServiceImpl implements SupplierService{
 	@Autowired
-	private JenisDb jenisDb;
+	private SupplierDb supplierDb;
 	
 	@Override
-	public List<JenisModel> getJenisList(){
-		return jenisDb.findAll();
+	public List<SupplierModel> getSupplierList(){
+		return supplierDb.findAll();
 	}
-
 }

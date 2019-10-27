@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>Add Obat</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	
+	<body>
+		<nav th:replace="fragments/fragment :: navbar (brand='Add Menu')"></nav>
+        <div class="container-fluid">
+        <h3>Tambah Obat</h3>
+		<form th:action="@{/obat/tambah}" th:object="${obat}" method="POST">
+        <input type="hidden" th:field="*{idObat}">
+        <input type="hidden" th:field="*{kodeObat}">
+        <label for="nama">Nama</label>
+        <input type="text" th:field="*{namaObat}"/>
+        <label for="jenis">Nomor Registrasi</label>
+        <input type="text" th:field="*{nomorRegistrasi}"/>
+        <label for="jenis">Tanggal Terbit</label>
+        <input type="date" th:field="*{tanggalTerbit}"/>
+        <label for="jenis">Harga</label>
+        <input type="number" th:field="*{hargaObat}"/>
+        <label for="bentuk">Bentuk</label>
+        <select th:field="${obat.bentukObat}" >
+        <option th:value="null" selected>-- Pilih Jenis --</option>
+        <option th:each="bentuk : ${listBentuk}" th:value="${bentuk}" th:text="${bentuk}"></option>
+        </select>
+        <label for="jenis">Jenis</label>
+        <select th:field="${obat.jenisObat}" id="jenis">
+        <option th:value="null" selected>-- Pilih Jenis --</option>
+        <option th:each="jenis : ${listJenis}" th:value="${jenis.idJenis}" th:text="${jenis.namaJenis}"></option>
+        </select><br>
+        <label for="supplier">Supplier</label>
+        <select th:field="${obat.listSupplier}">
+        <option th:each="supplier : ${existsSupplier}" th:value="${supplier.idSupplier}" th:text="${supplier.namaSupplier}"></option>
+        </select><br>
+        <!-- Supplier
+	    <table class="table">
+        <tbody>
+            <tr th:each="supplier,rowStat : *{listSupplier}">
+                <td>
+                    <select th:field="${listSupplier[__${rowStat.index}__.namaSupplier]}">
+                    <option th:each="supplier : ${listSupplier}" 
+                            th:value="${supplier.namaSupplier}" 
+                            th:text="${supplier.namaSupplier}"></option>
+                    </select>
+                </td>
+                </tr>
+                <td>
+                    <input type="submit" name="addRow" >Tambah Supplier</input>
+                </td>
+        </tbody>
+    </table> --> 
+    <button type="submit" name="save" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+	</body>
+</html>

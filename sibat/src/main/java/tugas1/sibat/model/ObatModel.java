@@ -20,6 +20,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,7 +29,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class ObatModel implements Serializable{
 	//Obat punya KODE blabla
 	@Id
-	@Size(max = 20)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idObat;
 	
@@ -53,6 +53,7 @@ public class ObatModel implements Serializable{
 	private String bentukObat;
 	
 	@NotNull
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@Column(name= "tanggal_terbit", nullable = false)
 	private Date tanggalTerbit;
 
@@ -70,7 +71,7 @@ public class ObatModel implements Serializable{
 	@JoinColumn(name = "id_jenis", referencedColumnName= "idJenis", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
-	private JenisModel jenis;
+	private JenisModel jenisObat;
 	
 	public List<SupplierModel> getListSupplier() {
 		return listSupplier;
@@ -80,12 +81,12 @@ public class ObatModel implements Serializable{
 		this.listSupplier = listSupplier;
 	}
 
-	public JenisModel getJenis() {
-		return jenis;
+	public JenisModel getJenisObat() {
+		return jenisObat;
 	}
 
-	public void setJenis(JenisModel jenis) {
-		this.jenis = jenis;
+	public void setJenisObat(JenisModel jenisObat) {
+		this.jenisObat = jenisObat;
 	}
 
 	public Long getIdObat() {

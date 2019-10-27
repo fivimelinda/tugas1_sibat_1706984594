@@ -4,7 +4,11 @@ import java.util.List;
 
 import tugas1.sibat.model.ObatModel;
 public interface ObatService {
+	void addObat(ObatModel obat);
+	
 	List<ObatModel> getObatList();
 	
 	ObatModel getObatByNomorRegistrasi(String nomorReg);
+	
+	String generateKodeObat(ObatModel obat);
 }

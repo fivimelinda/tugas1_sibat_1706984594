@@ -29,7 +29,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name="supplier")
 public class SupplierModel implements Serializable {
 	@Id
-	@Size(max = 20)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idSupplier;
 	

@@ -20,7 +20,6 @@ import javax.validation.constraints.Size;
 @Table(name="jenis")
 public class JenisModel implements Serializable{
 	@Id
-	@Size(max = 20)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idJenis;
 	
@@ -33,9 +32,6 @@ public class JenisModel implements Serializable{
 	@Size(max = 255)
 	@Column(name="deskripsi", nullable = false)
 	private String deskripsi;
-	
-	@OneToMany(mappedBy = "jenis", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<ObatModel> listObat;
 	
 
 	public Long getIdJenis() {
