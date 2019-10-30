@@ -1,6 +1,7 @@
 package tugas1.sibat.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -19,5 +20,15 @@ public class SupplierServiceImpl implements SupplierService{
 	@Override
 	public List<SupplierModel> getSupplierList(){
 		return supplierDb.findAll();
+	}
+	
+	@Override
+	public void addSupplier(SupplierModel supplier) {
+		supplierDb.save(supplier);
+	}
+	
+	@Override
+	public Optional<SupplierModel> getSupplierById(Long idSupplier) {
+		return supplierDb.findById(idSupplier);
 	}
 }

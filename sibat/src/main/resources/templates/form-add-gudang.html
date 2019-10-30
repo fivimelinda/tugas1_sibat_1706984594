@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>Add Gudang</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	
+	<body>
+		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
+        <div class="container-fluid">
+        <h3>Tambah Gudang</h3>
+		<form th:action="@{/gudang/tambah}" th:object="${gudang}" method="POST">
+        <label for="nama">Nama:</label>
+        <div class="col-sm-2">
+        <input type="text" th:field="${gudang.namaGudang}"/>
+        </div>
+        <div class="col-sm-2">
+        <label for="alamat">Alamat:</label>
+        <input type="text" th:field="${gudang.alamatGudang}"/>
+        </div>
+    	<button type="submit" name="save" class="btn btn-primary">Submit</button>
+    	</form>
+    </div>
+	</body>
+</html>

@@ -46,7 +46,7 @@ public class SupplierModel implements Serializable {
 	@Column(name= "nomor_telepon", nullable = false)
 	private Long nomorTelepon;
 	
-	@ManyToMany
+	@ManyToMany(cascade= {CascadeType.ALL})
 	@JoinTable(
 			name= "obat_supplier",
 			joinColumns = @JoinColumn(name = "id_supplier"),

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 	<head>
-		<title>Add Obat</title>
+		<title>View Obat</title>
 		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
 		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 	</head>
 	<body>
 		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
-		<div class="container-fluid col-sm-4">
-		<h2 th:text="'Obat ' + ${nama} + ' dengan kode' + ${kodeObat} + ' berhasil ditambahkan'"></h2>
+		<div class="container-fluid">
+		<h2 th:text="'Data obat ' + ${obat.namaObat} + ' dengan kode' + ${obat.kodeObat} + ' berhasil diubah'"></h2>
 		<a th:href="@{/}">Kembali ke Beranda</a>
 		</div>
 	</body>

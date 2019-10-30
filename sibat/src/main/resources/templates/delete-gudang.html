@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 	<head>
-		<title>Add Obat</title>
+		<title>Delete Gudang</title>
 		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
 		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 	</head>
 	<body>
 		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
 		<div class="container-fluid col-sm-4">
-		<h2 th:text="'Obat ' + ${nama} + ' dengan kode' + ${kodeObat} + ' berhasil ditambahkan'"></h2>
+		<td th:if="${isDelete}">
+			<h2 th:text="'Gudang ' + ${nama} + ' berhasil dihapus'"></h2>
+		</td>
+		<td th:unless="${isDelete}">
+			<h2 th:text="'Gudang ' + ${nama} + ' tidak dapat dihapus'"></h2>
+		</td>
 		<a th:href="@{/}">Kembali ke Beranda</a>
 		</div>
 	</body>

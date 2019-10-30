@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,7 @@ public class GudangModel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idGudang;
-	
+
 	@NotNull
 	@Size(max = 255)
 	@Column(name="nama", nullable = false)
@@ -35,7 +36,7 @@ public class GudangModel implements Serializable {
 	@Column(name="alamat", nullable = false)
 	private String alamatGudang;
 
-	@ManyToMany
+	@ManyToMany(cascade= {CascadeType.ALL})
 	@JoinTable(
 			name= "gudang_obat",
 			joinColumns = @JoinColumn(name = "id_gudang"),
@@ -64,6 +65,14 @@ public class GudangModel implements Serializable {
 
 	public void setAlamatGudang(String alamatGudang) {
 		this.alamatGudang = alamatGudang;
+	}
+	
+	public List<ObatModel> getListObat() {
+		return listObat;
+	}
+
+	public void setListObat(List<ObatModel> listObat) {
+		this.listObat = listObat;
 	}
 
 

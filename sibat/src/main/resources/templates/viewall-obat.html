@@ -24,15 +24,17 @@
 						<td th:text="${iterationStatus.count}"> </td>
 						<td th:text="${obat.kodeObat}"> </td>
 						<td th:text="${obat.namaObat}"> </td>
-						<td th:text="'Rp ' + ${obat.hargaObat}"></td>
+						<td th:text="'Rp ' + ${obat.hargaObat.intValue()}"></td>
 						<td>
 							<button class="btn btn-sm" style="background-color: lightseagreen; color: white; display: inline-block;">
 								<a th:href="@{/obat/view(noReg=${obat.nomorRegistrasi})}" style="color: white;">Lihat</a>
 							</button>
 							<button type="submit" class="btn btn-sm" style="background-color: black;  color: white;">
-								<a th:href="@{/obat/ubah(id=${obat.idObat})}" style="color: white;">Ubah</a>
+								<a th:href="@{/obat/ubah?id={id}(id=${obat.idObat})}" style="color: white;">Ubah</a>
 							</button>
-							<button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+							<button type="submit" class="btn btn-sm btn-danger">
+								<a th:href="@{#}" style="color: white;">Hapus</a>
+							</button>
 						</td>
 					</tr>
 				</tbody>

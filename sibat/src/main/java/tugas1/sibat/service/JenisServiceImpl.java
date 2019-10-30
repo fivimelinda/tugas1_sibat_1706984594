@@ -1,6 +1,7 @@
 package tugas1.sibat.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -19,6 +20,11 @@ public class JenisServiceImpl implements JenisService{
 	@Override
 	public List<JenisModel> getJenisList(){
 		return jenisDb.findAll();
+	}
+	
+	@Override
+	public Optional<JenisModel> getJenisById(Long idJenis){
+		return jenisDb.findById(idJenis);
 	}
 
 }

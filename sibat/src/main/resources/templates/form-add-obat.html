@@ -7,34 +7,70 @@
 	</head>
 	
 	<body>
-		<nav th:replace="fragments/fragment :: navbar (brand='Add Menu')"></nav>
+		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
         <div class="container-fluid">
         <h3>Tambah Obat</h3>
 		<form th:action="@{/obat/tambah}" th:object="${obat}" method="POST">
         <input type="hidden" th:field="*{idObat}">
         <input type="hidden" th:field="*{kodeObat}">
-        <label for="nama">Nama</label>
-        <input type="text" th:field="*{namaObat}"/>
-        <label for="jenis">Nomor Registrasi</label>
-        <input type="text" th:field="*{nomorRegistrasi}"/>
-        <label for="jenis">Tanggal Terbit</label>
-        <input type="date" th:field="*{tanggalTerbit}"/>
-        <label for="jenis">Harga</label>
-        <input type="number" th:field="*{hargaObat}"/>
-        <label for="bentuk">Bentuk</label>
-        <select th:field="${obat.bentukObat}" >
-        <option th:value="null" selected>-- Pilih Jenis --</option>
-        <option th:each="bentuk : ${listBentuk}" th:value="${bentuk}" th:text="${bentuk}"></option>
-        </select>
-        <label for="jenis">Jenis</label>
-        <select th:field="${obat.jenisObat}" id="jenis">
-        <option th:value="null" selected>-- Pilih Jenis --</option>
-        <option th:each="jenis : ${listJenis}" th:value="${jenis.idJenis}" th:text="${jenis.namaJenis}"></option>
-        </select><br>
-        <label for="supplier">Supplier</label>
-        <select th:field="${obat.listSupplier}">
-        <option th:each="supplier : ${existsSupplier}" th:value="${supplier.idSupplier}" th:text="${supplier.namaSupplier}"></option>
-        </select><br>
+       	<div class="row">
+	        <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+	        <div class="col-sm-3">
+	        	<input class="form-control" type="text" th:field="*{namaObat}"/>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <label for="jenis" class="col-sm-2 col-form-label">Nomor Registrasi</label>
+	        <div class="col-sm-3">
+	        	<input class="form-control" type="text" th:field="*{nomorRegistrasi}"/>
+        	</div>
+        </div>
+        <div class="row">
+	        <label for="jenis" class="col-sm-2 col-form-label">Tanggal Terbit</label>
+	        <div class="col-sm-3">
+	        	<input class="form-control"type="date" th:field="*{tanggalTerbit}"/>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <label for="jenis" class="col-sm-2 col-form-label">Harga</label>
+	        <div class="col-sm-3">
+	        	<input class="form-control" type="number" th:field="${obat.hargaObat}"/>
+        	</div>
+        </div>	
+        <div class="row">
+	        <label for="bentuk" class="col-sm-2 col-form-label">Bentuk</label>
+	        <div class="col-sm-3">
+				<select class="form-control" th:field="${obat.bentukObat}" >
+					<option th:value="null" selected>-- Pilih Jenis --</option>
+					<option th:each="bentuk : ${listBentuk}" th:value="${bentuk}" th:text="${bentuk}"></option>
+				</select>
+        	</div>
+        </div>	
+        <div class="row">
+        	<label for="jenis" class="col-sm-2 col-form-label">Jenis</label>
+	        <div class="col-sm-3">
+				<select class="form-control" th:field="${obat.jenisObat}" id="jenis">
+					<option th:value="null" selected>-- Pilih Jenis --</option>
+					<option th:each="jenis : ${listJenis}" th:value="${jenis.idJenis}" th:text="${jenis.namaJenis}"></option>
+				</select>
+	        </div>
+	    </div>
+	    <div class="row">  
+	        <label for="supplier" class="col-sm-2 col-form-label">Supplier</label>
+	        <div class="col-sm-3">
+	        <tr th:each="supplier,iterationStatus : *{listSupplier}">
+				<td>
+				<select class="form-control" th:field="*{listSupplier[__${iterationStatus.index}__]}">
+					<option th:value="null" selected>-- Silahkan Pilih Supplier --</option>
+					<option th:each="supplier : ${listSupplier}" th:value="${supplier.idSupplier}" th:text="${supplier.namaSupplier}"></option>
+				</select>
+				</td>
+	        </tr>
+	        </div>
+	        <div>
+            	<button type="submit" value="Tambah Supplier" name="addRow" class="btn btn-sm btn-info">ADD ROW</button>
+            </div>
+	    </div>
         <!-- Supplier
 	    <table class="table">
         <tbody>

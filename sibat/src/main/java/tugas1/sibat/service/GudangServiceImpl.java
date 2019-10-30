@@ -1,6 +1,7 @@
 package tugas1.sibat.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -21,5 +22,29 @@ public class GudangServiceImpl implements GudangService {
 	@Override
 	public List<GudangModel> getGudangList(){
 		return gudangDb.findAll();
+	}
+	
+	@Override
+	public Optional<GudangModel> getGudangById(Long idGudang) {
+		return gudangDb.findByIdGudang(idGudang);
+	}
+	
+	@Override
+	public GudangModel addGudang(GudangModel gudang) {
+		return gudangDb.save(gudang);
+	}
+	
+	@Override
+	public void deleteGudang(GudangModel gudang) {
+		gudangDb.delete(gudang);
+		
+	}
+	
+	@Override
+	public void addObat(GudangModel gudang) {
+//		gudang.getListObat().add(obat);
+//		obat.getListGudang().add(gudang);
+		gudangDb.save(gudang);
+//		obatDb.save(obat);
 	}
 }

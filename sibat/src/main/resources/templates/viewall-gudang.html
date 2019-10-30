@@ -8,8 +8,8 @@
 	<body>
 		<nav th:replace="fragments/fragment :: navbar(brand='SIBAT')"></nav>
 		<div class="container-fluid">
-            <h2 style="text-align: center;">Sistem Informasi Inventory Obat</h2>
-            <div class="col-sm-10 container-fluid">
+			<div class="col-sm-10 container-fluid">
+            <h2 style="background-color: #343a40; color: white; margin-top: 10px; margin-bottom: 0%; padding: 10px;">Sistem Informasi Inventory Obat</h2>
             <table class="table">
 				<thead>
 					<tr>
@@ -25,15 +25,17 @@
 						<td th:text="${gudang.namaGudang}"> </td>
 						<td th:text="${gudang.alamatGudang}"> </td>
 						<td>
-							<button th:action="@{#}" type="submit" class="btn btn-sm" style="background-color: lightseagreen; color: white;">Lihat</button>
+							<button type="submit" class="btn btn-sm" style="background-color: lightseagreen; color: white;">
+								<a th:href="@{/gudang/view(idGudang=${gudang.idGudang})}" style="color: white;">Lihat</a></button>
 							<button type="submit" class="btn btn-sm" style="background-color: black;  color: white;">Ubah</button>
-							<button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+							<button type="submit" class="btn btn-sm btn-danger">
+							<a th:href="@{/gudang/hapus/} + ${gudang.idGudang}" style="color: white;">Hapus</a></button>
 						</td>
 					</tr>
                 </tbody>
             </table>
-			    <button th:action="@{#}" class="btn btn-sm btn-primary" style="background-color: black; border-color: black; float: right;">
-				Tambah Gudang
+			    <button class="btn btn-sm btn-primary" style="background-color: black; border-color: black; float: right;">
+				<a th:href="@{/gudang/tambah}" style="color: white;">Tambah Gudang</a>
 			    </button>
             </div>
 		</div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>Change Data Obat</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	
+	<body>
+		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
+		<div class="container-fluid">
+		<h2>Ubah Data Obat</h2>
+		<form th:action="@{/obat/ubah?id={id}(id=${obat.idObat})}" th:object="${obat}" method="POST">
+			<input type="hidden" th:field="${obat.idObat}"/>
+			<div class="row">
+				<label for="nama" class="col-sm-2 col-form-label">Nama obat: </label>
+				<div class="col-sm-3">
+				<input class="form-control" type="text" name="nama" th:field="${obat.namaObat}"/>
+				</div>
+			</div>
+			<div class="row">
+					<label for="tanggal" class="col-sm-2 col-form-label">Tanggal Terbit: </label>
+					<div class="col-sm-3">
+					<input class="form-control" type="date" name="tanggal" th:field="${{obat.tanggalTerbit}}"/>
+					</div>
+			</div>
+			<div class="row">
+				<label for="harga" class="col-sm-2">Harga: </label>
+				<div class="col-sm-3">
+				<input class="form-control" type="number" name="harga" th:field="${obat.hargaObat}"/>
+				</div>
+			</div>
+			<div class="row">
+					<label for="bentuk" class="col-sm-2">Bentuk: </label>
+					<div class="col-sm-3">
+						<select class="form-control" th:field="${obat.bentukObat}" id="bentuk">
+						<option th:value="${obat.bentukObat}" th:text="${obat.bentukObat}" selected></option>
+						<option th:each="bentuk : ${listBentuk}" th:value="${bentuk}" th:text="${bentuk}"></option>
+						</select>
+					</div>
+			</div>
+			<div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</div>
+		</form>
+		</div>
+	</body>
+</html>

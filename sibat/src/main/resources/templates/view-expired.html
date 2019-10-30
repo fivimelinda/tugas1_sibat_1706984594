@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>Daftar Obat Expired</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
+		<div class="container-fluid col-sm-10">
+            <div >      
+			<h3 style="background-color: #343a40; color: white; margin-top: 10px; margin-bottom: 0%; padding: 10px;">Daftar Obat Expired</h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Kode</th>
+						<th>Nama</th>
+						<th>Harga</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="obat, iterationStatus : ${expiredList}">
+						<td th:text="${iterationStatus.count}"> </td>
+						<td th:text="${obat.kodeObat}"> </td>
+						<td th:text="${obat.namaObat}"> </td>
+						<td th:text="'Rp ' + ${obat.hargaObat.intValue()}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
