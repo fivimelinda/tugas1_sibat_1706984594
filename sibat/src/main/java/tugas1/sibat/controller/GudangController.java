@@ -1,5 +1,6 @@
 package tugas1.sibat.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,12 +91,16 @@ public class GudangController {
 			}
 			gudang.getListObat().add(obat);
 			gudangService.addGudang(gudang);
+			LocalDate waktu = java.time.LocalDate.now();
 			List<ObatModel> obatList = obatService.getObatByIdGudang(gudang.getIdGudang());
 			List<ObatModel> allObat = obatService.getObatList();
 			model.addAttribute("gudang", gudang);
 			model.addAttribute("listObat", obatList);
 			model.addAttribute("allObat", allObat);
+			model.addAttribute("waktu", waktu);
 			model.addAttribute("jumlahObat", obatList.size());
+			model.addAttribute("hasAdded", true);
+			model.addAttribute("obat", obat);
 			return "view-detail-gudang";
 		}
 		
