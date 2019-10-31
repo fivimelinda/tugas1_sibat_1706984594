@@ -31,20 +31,23 @@
 				
 				<form th:action="@{/gudang/tambah-obat}" th:object="${gudang}" method="POST">
                     <div class="row">
-                	<div class="col-sm-2">
-                	<input type="hidden" th:field="${gudang.idGudang}"/>
-			        <select name="idObat" class="form-control">
-			        <option th:each="obat : ${allObat}" th:value="${obat.idObat}" th:text="${obat.namaObat}"></option>
-			        </select>
-			        </div>
+                	<div class="col-sm-2">Tambahkan Obat</div>
 			        <div class="col-sm-10">
-			        <input type="submit" class="btn btn-primary"/>
+						<input type="hidden" th:field="${gudang.idGudang}"/>
+						<div class="row">
+							<div class="col-sm-3">
+								<select name="idObat" class="form-control">
+									<option th:each="obat : ${allObat}" th:value="${obat.idObat}" th:text="${obat.namaObat}"></option>
+								</select>
+							</div>
+						<input type="submit" class="btn btn-primary" style="background-color:#BB0029; border-color: #BB0029;"/>
+						</div>
 			        </div>
 			    	</div>
 				</form>
 				
             </div>           
-			<h3 style="background-color: #343a40; color: white; margin-top: 10px; margin-bottom: 0%; padding: 10px;">Daftar Obat</h3>
+			<h3 style="background-color: #7B3C59; color: white; margin-top: 10px; margin-bottom: 0%; padding: 10px;">Daftar Obat</h3>
 			<table class="table">
 				<thead>
 					<tr>

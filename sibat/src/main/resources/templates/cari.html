@@ -7,18 +7,18 @@
 	</head>
 	<body>
 		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
-		<div class="container-fluid col-sm-6">
-        <h2 th:text="'Cek Obat yang sudah expired di Gudang'"></h2>
+		<div class="container-fluid col-sm-6" style= "border-style:ridge; margin-top: 20px; padding-bottom: 10px;">
+        <h3 style="background-color: #7B3C59 ; color: white; margin-top: 10px; margin-bottom: 10px; padding: 10px;">Cek Obat yang sudah expired di Gudang</h2>
         <form th:action="@{/gudang/expired-obat}" th:object="${listGudang}" method="GET">
-        <div class="row">
-                <div class="col-sm-3">
+        <div class="row" style="margin-top: 10px; padding-left: 10px;">
+                <label for="jenis" class="col-sm-3 col-form-label">Pilih Gudang</label>
+                <div class="col-sm-4">
                     <select class="form-control" name="idGudang">
-                        <option th:value="null" selected>-- Pilih Gudang --</option>
                         <option th:each="target : ${listGudang}" th:value="${target.idGudang}" th:text="${target.namaGudang}"></option>
                     </select>
                 </div>
+                <button type="submit" class="btn btn-primary" style="background-color:#BB0029; border-color: #BB0029;">Lihat</button>
         </div>
-        <button type="submit" class="btn btn-primary">Lihat</button>
         </form>
 		</div>
 	</body>

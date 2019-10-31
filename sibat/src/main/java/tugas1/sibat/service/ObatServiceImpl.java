@@ -100,7 +100,6 @@ public class ObatServiceImpl implements ObatService{
 			obatDb.save(targetObat);
 			return targetObat;
 		} catch (NullPointerException nullException) {
-			System.out.println("ini null");
 			return null;
 		}
 	}

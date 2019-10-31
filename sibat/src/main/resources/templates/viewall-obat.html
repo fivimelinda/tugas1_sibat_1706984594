@@ -7,8 +7,8 @@
 	</head>
 	<body>
 		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
-		<div class="container-fluid col-sm-10">
-			<h3 style="background-color: #343a40; color: white; margin-top: 10px; margin-bottom: 0%; padding: 10px;">Daftar Obat</h3>
+		<div class="container-fluid col-sm-10" style="margin-block-end: 10px;">
+			<h3 style="background-color: #7B3C59 ; color: white; margin-top: 10px; margin-bottom: 0%; padding: 10px;">Daftar Obat</h3>
 			<table class="table">
 				<thead>
 					<tr>
@@ -26,20 +26,20 @@
 						<td th:text="${obat.namaObat}"> </td>
 						<td th:text="'Rp ' + ${obat.hargaObat.intValue()}"></td>
 						<td>
-							<button class="btn btn-sm" style="background-color: lightseagreen; color: white; display: inline-block;">
+							<button class="btn btn-sm" style="background-color:#03002C; color: white; display: inline-block;">
 								<a th:href="@{/obat/view(noReg=${obat.nomorRegistrasi})}" style="color: white;">Lihat</a>
 							</button>
-							<button type="submit" class="btn btn-sm" style="background-color: black;  color: white;">
+							<button type="submit" class="btn btn-sm" style="background-color: #F5841A;  color: white;">
 								<a th:href="@{/obat/ubah?id={id}(id=${obat.idObat})}" style="color: white;">Ubah</a>
 							</button>
-							<button type="submit" class="btn btn-sm btn-danger">
-								<a th:href="@{#}" style="color: white;">Hapus</a>
+							<button type="submit" class="btn btn-sm" style="background-color:#BB0029;">
+								<a style="color: white;">Hapus</a>
 							</button>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-			<button class="btn btn-sm btn-primary" style="background-color: black; border-color: black; float: right;">
+			<button class="btn btn-lg" style="background-color: #7B3C59; border-color: #7B3C59; float: right; margin-bottom: 20px;">
 				<a th:href="@{/obat/tambah}" style="color: white;">Tambah Obat</a>
 			</button>
 		</div>

@@ -8,18 +8,28 @@
 	
 	<body>
 		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
-        <div class="container-fluid">
-        <h3>Tambah Gudang</h3>
-		<form th:action="@{/gudang/tambah}" th:object="${gudang}" method="POST">
-        <label for="nama">Nama:</label>
-        <div class="col-sm-2">
-        <input type="text" th:field="${gudang.namaGudang}"/>
-        </div>
-        <div class="col-sm-2">
-        <label for="alamat">Alamat:</label>
-        <input type="text" th:field="${gudang.alamatGudang}"/>
-        </div>
-    	<button type="submit" name="save" class="btn btn-primary">Submit</button>
+        <div class="col-sm-4"></div>
+        <div class="container-fluid col-sm-4" style= "border-style:ridge; margin-top: 20px; padding-bottom: 10px;" >
+            <h3 style="background-color: #7B3C59 ; color: white; margin: 10px 0px 10px 0px; padding: 10px;">Tambah Gudang</h3>
+            <form th:action="@{/gudang/tambah}" th:object="${gudang}" method="POST">
+            <div class="row" style="margin-top: 10px; padding-left: 10px;">
+                <label for="nama" class="col-sm-2 col-form-label">Nama:</label>
+                <div class="col-sm-6">
+                        <input class="form-control" type="text" th:field="${gudang.namaGudang}"/>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px; padding-left: 10px;">
+                <label for="alamat" class="col-sm-2 col-form-label">Alamat:</label>
+                <div class="col-sm-6">
+                <input class="form-control" type="text" th:field="${gudang.alamatGudang}"/>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px; margin-bottom: 10px;">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4" style="align-items: center; justify-content: center; display: flex;">
+                        <button type="submit" name="save" class="btn btn-primary" style="background-color:#BB0029; border-color: #BB0029;">Submit</button>
+                </div>
+            </div>
     	</form>
     </div>
 	</body>

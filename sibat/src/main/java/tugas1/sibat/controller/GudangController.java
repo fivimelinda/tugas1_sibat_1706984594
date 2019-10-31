@@ -115,8 +115,13 @@ public class GudangController {
 			GudangModel gudangTarget = gudangService.getGudangById(Long.valueOf(idGudang)).get();
 			List<ObatModel> listObat = gudangTarget.getListObat();
 			List<ObatModel> expiredList = obatService.cekExpired(listObat);			
-			//return view template
+			boolean existExpired = true;
+			if(expiredList.isEmpty()) {
+				existExpired = false;
+			}
 			model.addAttribute("expiredList", expiredList);
+			model.addAttribute("existExpired", existExpired);
+			model.addAttribute("namaGudang", gudangTarget.getNamaGudang());
 			return "view-expired";
 		}
 		

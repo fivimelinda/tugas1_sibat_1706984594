@@ -7,27 +7,36 @@
 	</head>
 	<body>
 		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
-		<div class="container-fluid col-sm-10">
-            <div >      
-			<h3 style="background-color: #343a40; color: white; margin-top: 10px; margin-bottom: 0%; padding: 10px;">Daftar Obat Expired</h3>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>No</th>
-						<th>Kode</th>
-						<th>Nama</th>
-						<th>Harga</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="obat, iterationStatus : ${expiredList}">
-						<td th:text="${iterationStatus.count}"> </td>
-						<td th:text="${obat.kodeObat}"> </td>
-						<td th:text="${obat.namaObat}"> </td>
-						<td th:text="'Rp ' + ${obat.hargaObat.intValue()}"></td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="container-fluid">
+			<td th:if="${existExpired}">
+				<div class="col-sm-10 container-fluid">      
+				<h3 style="background-color: #7B3C59; color: white; margin-top: 10px; margin-bottom: 0%; padding: 10px;" th:text="'Daftar Obat Expired di '+ ${namaGudang}" ></h3>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Kode</th>
+							<th>Nama</th>
+							<th>Harga</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="obat, iterationStatus : ${expiredList}">
+							<td th:text="${iterationStatus.count}"> </td>
+							<td th:text="${obat.kodeObat}"> </td>
+							<td th:text="${obat.namaObat}"> </td>
+							<td th:text="'Rp ' + ${obat.hargaObat.intValue()}"></td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+			</td>
+			<td th:unless="${existExpired}">
+				<div class="col-sm-6 container-fluid" style= "border-style:ridge; margin-top: 20px; padding-bottom: 10px;"> 
+					<h3 style="background-color: #F5841A ; color: white; margin-top: 10px; margin-bottom: 10px; padding: 10px;" th:text="'Tidak ada obat expired di ' + ${namaGudang}"></h3>
+					<a th:href="@{/cari}">Cek di Gudang Lain</a>
+				</div>
+			</td>
 		</div>
 	</body>
 </html>

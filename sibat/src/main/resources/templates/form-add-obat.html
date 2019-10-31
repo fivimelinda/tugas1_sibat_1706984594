@@ -8,56 +8,57 @@
 	
 	<body>
 		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
-        <div class="container-fluid">
-        <h3>Tambah Obat</h3>
+        <div class="col-sm-3"></div>
+		<div class="container-fluid col-sm-6" style= "border-style:ridge; margin-top: 20px; padding-bottom: 10px;">
+        <h3 style="background-color: #7B3C59 ; color: white; margin-top: 10px; margin-bottom: 10px; padding: 10px;">Tambah Obat</h3>
 		<form th:action="@{/obat/tambah}" th:object="${obat}" method="POST">
         <input type="hidden" th:field="*{idObat}">
         <input type="hidden" th:field="*{kodeObat}">
-       	<div class="row">
-	        <label for="nama" class="col-sm-2 col-form-label">Nama</label>
-	        <div class="col-sm-3">
+       	<div class="row" style="margin-top: 10px; padding-left: 10px;">
+	        <label for="nama" class="col-sm-3 col-form-label">Nama</label>
+	        <div class="col-sm-5">
 	        	<input class="form-control" type="text" th:field="*{namaObat}"/>
 	        </div>
 	    </div>
-	    <div class="row">
-	        <label for="jenis" class="col-sm-2 col-form-label">Nomor Registrasi</label>
-	        <div class="col-sm-3">
+	    <div class="row" style="margin-top: 10px; padding-left: 10px;">
+	        <label for="jenis" class="col-sm-3 col-form-label">Nomor Registrasi</label>
+	        <div class="col-sm-5">
 	        	<input class="form-control" type="text" th:field="*{nomorRegistrasi}"/>
         	</div>
         </div>
-        <div class="row">
-	        <label for="jenis" class="col-sm-2 col-form-label">Tanggal Terbit</label>
-	        <div class="col-sm-3">
+        <div class="row" style="margin-top: 10px; padding-left: 10px;">
+	        <label for="jenis" class="col-sm-3 col-form-label">Tanggal Terbit</label>
+	        <div class="col-sm-5">
 	        	<input class="form-control"type="date" th:field="*{tanggalTerbit}"/>
 	        </div>
 	    </div>
-	    <div class="row">
-	        <label for="jenis" class="col-sm-2 col-form-label">Harga</label>
-	        <div class="col-sm-3">
+	    <div class="row" style="margin-top: 10px; padding-left: 10px;">
+	        <label for="jenis" class="col-sm-3 col-form-label">Harga</label>
+	        <div class="col-sm-5">
 	        	<input class="form-control" type="number" th:field="${obat.hargaObat}"/>
         	</div>
         </div>	
-        <div class="row">
-	        <label for="bentuk" class="col-sm-2 col-form-label">Bentuk</label>
-	        <div class="col-sm-3">
+        <div class="row" style="margin-top: 10px; padding-left: 10px;">
+	        <label for="bentuk" class="col-sm-3 col-form-label">Bentuk</label>
+	        <div class="col-sm-5">
 				<select class="form-control" th:field="${obat.bentukObat}" >
 					<option th:value="null" selected>-- Pilih Jenis --</option>
 					<option th:each="bentuk : ${listBentuk}" th:value="${bentuk}" th:text="${bentuk}"></option>
 				</select>
         	</div>
         </div>	
-        <div class="row">
-        	<label for="jenis" class="col-sm-2 col-form-label">Jenis</label>
-	        <div class="col-sm-3">
+        <div class="row" style="margin-top: 10px; padding-left: 10px;">
+        	<label for="jenis" class="col-sm-3 col-form-label">Jenis</label>
+	        <div class="col-sm-5">
 				<select class="form-control" th:field="${obat.jenisObat}" id="jenis">
 					<option th:value="null" selected>-- Pilih Jenis --</option>
 					<option th:each="jenis : ${listJenis}" th:value="${jenis.idJenis}" th:text="${jenis.namaJenis}"></option>
 				</select>
 	        </div>
 	    </div>
-	    <div class="row">  
-	        <label for="supplier" class="col-sm-2 col-form-label">Supplier</label>
-	        <div class="col-sm-3">
+	    <div class="row" style="margin-top: 10px; padding-left: 10px;">  
+	        <label for="supplier" class="col-sm-3 col-form-label">Supplier</label>
+	        <div class="col-sm-5">
 	        <tr th:each="supplier,iterationStatus : *{listSupplier}">
 				<td>
 				<select class="form-control" th:field="*{listSupplier[__${iterationStatus.index}__]}">
@@ -67,29 +68,18 @@
 				</td>
 	        </tr>
 	        </div>
-	        <div>
-            	<button type="submit" value="Tambah Supplier" name="addRow" class="btn btn-sm btn-info">ADD ROW</button>
+	        <div style="padding-top: 4px;">
+            	<button type="submit" value="Tambah Supplier" name="addRow" class="btn btn-sm btn-info" style="background-color: #F5841A; border-color: #F5841A;">ADD ROW</button>
             </div>
-	    </div>
-        <!-- Supplier
-	    <table class="table">
-        <tbody>
-            <tr th:each="supplier,rowStat : *{listSupplier}">
-                <td>
-                    <select th:field="${listSupplier[__${rowStat.index}__.namaSupplier]}">
-                    <option th:each="supplier : ${listSupplier}" 
-                            th:value="${supplier.namaSupplier}" 
-                            th:text="${supplier.namaSupplier}"></option>
-                    </select>
-                </td>
-                </tr>
-                <td>
-                    <input type="submit" name="addRow" >Tambah Supplier</input>
-                </td>
-        </tbody>
-    </table> --> 
-    <button type="submit" name="save" class="btn btn-primary">Submit</button>
+		</div>
+		<div class="row" style="margin-top: 50px; margin-bottom: 10px;">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4" style="align-items: center; justify-content: center; display: flex;">
+			<button type="submit" name="save" class="btn btn-primary" style="background-color:#BB0029; border-color: #BB0029;">Submit</button>
+			</div>
+		</div>
     </form>
-    </div>
+	</div>
+	<div class="col-sm-3"></div>
 	</body>
 </html>
