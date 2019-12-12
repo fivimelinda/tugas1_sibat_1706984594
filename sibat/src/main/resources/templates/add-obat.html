@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>Add Obat</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
+		<div class="col-sm-3"></div>
+		<div class="container-fluid col-sm-6" style= "border-style:ridge; margin-top: 20px; padding-bottom: 10px;">
+			<h3 style="background-color: #F5841A ; color: white; margin-top: 10px; margin-bottom: 10px; padding: 10px;">Berhasil!</h3>
+			<h5 th:text="'Obat ' + ${nama} + ' dengan kode ' + ${kodeObat} + ' telah ditambahkan'"></h5>
+			<a th:href="@{/}">Kembali ke Beranda</a>
+		</div>
+		<div class="col-sm-3"></div>
+	</body>
+</html>

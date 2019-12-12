@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>Filter Obat</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
+		<div class="container-fluid col-sm-10">
+			<div class="col-sm-3" style="border-style: groove; border-radius: 15px; margin-top: 15px;">
+				<h4 style="background-color: #F5841A ; color: white; margin-top: 10px; margin-bottom: 10px; padding: 10px;">Cari Obat</h4>
+				<form th:action="@{/obat/filter}" th:object="${obat}" method="GET">
+					<label for="gudang" class="col-sm-3 col-form-label">Gudang:</label>
+					<div class="row">
+                		<div class="col-sm-12">
+					        <select name="idGudang" class="form-control">
+					        	<option th:value="null" selected>-- Pilih Gudang --</option>
+					        	<option th:each="gudang : ${listGudang}" th:value="${gudang.idGudang}" th:text="${gudang.namaGudang}"></option>
+					        </select>
+			        	</div>
+					</div>
+					<label for="supplier" class="col-sm-3 col-form-label">Supplier:</label>
+			    	<div class="row">
+                		<div class="col-sm-12">
+					        <select name="idSupplier" class="form-control">
+					        	<option th:value="null" selected>-- Pilih Supplier --</option>
+					        	<option th:each="supplier : ${listSupplier}" th:value="${supplier.idSupplier}" th:text="${supplier.namaSupplier}"></option>
+					        </select>
+			        	</div>
+					</div>
+					<label for="jenis" class="col-sm-3 col-form-label">Jenis:</label>
+			    	<div class="row">
+                		<div class="col-sm-12">
+					        <select name="idJenis" class="form-control">
+					        	<option th:value="null" selected>-- Pilih Jenis --</option>
+					        	<option th:each="jenis : ${listJenis}" th:value="${jenis.idJenis}" th:text="${jenis.namaJenis}"></option>
+					        </select>
+			        	</div>
+			    	</div>
+			    	<div class="col-sm-12" style="margin-top:40px; margin-bottom: 10px; align-items: center; justify-content: center; display: flex;">
+			    	<input type="submit" class="btn btn-primary" style="background-color:#BB0029; border-color: #BB0029;"/>
+			    	</div>
+				</form>	
+			</div>     
+			<div style="margin-top: 20px">    
+					<h3 style="background-color: #7B3C59 ; color: white; margin-top: 10px; margin-bottom: 0%; padding: 10px;">Daftar Obat</h3>
+				<table class="table">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Kode</th>
+						<th>Nama</th>
+						<th>Harga</th>
+						<th>Gudang</th>
+						<th>Jenis</th>
+						<th>Supplier</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="obat, iterationStatus : ${listObat}">
+						<td th:text="${iterationStatus.count}"> </td>
+						<td th:text="${obat.kodeObat}"> </td>
+						<td th:text="${obat.namaObat}"> </td>
+						<td th:text="'Rp ' + ${obat.hargaObat.intValue()}"></td>
+ 						<td th:text="${gudangName}"></td>
+						<td th:text="${jenisName}"></td>
+						<td th:text="${supplierName}"></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>  
+	</body>
+</html>

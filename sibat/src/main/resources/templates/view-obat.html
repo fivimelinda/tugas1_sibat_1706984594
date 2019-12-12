@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>View Obat</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
+		<div class="col-sm-3"></div>
+		<div class="container-fluid col-sm-6" style= "border-style:ridge; margin-top: 20px; margin-bottom: 20px; padding-bottom: 10px;">
+			<h2 style="background-color:#7B3C59; ; margin-top: 10px; margin-bottom: 10px; padding: 10px; color: white;">Detail Data Obat</h2>
+			<div class="row">
+				<div class="col-sm-6">Kode</div>
+				<div class="col-sm-6">
+					<p th:text="${obat.kodeObat}"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Nama</div>
+				<div class="col-sm-6">
+					<p th:text="${obat.namaObat}"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Nomor Registrasi</div>
+				<div class="col-sm-6">
+					<p th:text="${obat.nomorRegistrasi}"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Bentuk</div>
+				<div class="col-sm-6">
+					<p th:text="${obat.bentukObat}"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Tanggal Terbit</div>
+				<div class="col-sm-6">
+					<p th:text="${#dates.format(obat.tanggalTerbit, 'yyyy-MM-dd')}"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Harga</div>
+				<div class="col-sm-6">
+					<p th:text="'Rp ' + ${obat.hargaObat.intValue()}"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Jenis Obat</div>
+				<div class="col-sm-6">
+					<p th:text="${obat.jenisObat.getNamaJenis()}"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Gudang Tempat Disimpan</div>
+				<div class="col-sm-6">
+					<td th:each="gudang, iterationStatus : ${obat.listGudang}">
+					<p th:text="${gudang.getNamaGudang()}"></p>
+					</td>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">Supplier</div>
+				<div class="col-sm-6">
+					<td th:each="supplier, iterationStatus : ${obat.listSupplier}">
+					<p th:text="${supplier.getNamaSupplier()}"></p>
+					</td>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3"></div>
+	</body>
+</html>

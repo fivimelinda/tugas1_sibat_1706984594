@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>Daftar Obat</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragment :: navbar(brand='SIBAT')"></nav>
+		<div class="container-fluid">
+			<div class="col-sm-10 container-fluid">
+            <h2 style="background-color: #7B3C59; color: white; margin-top: 10px; margin-bottom: 0%; padding: 10px;">Sistem Informasi Inventory Obat</h2>
+            <table class="table">
+				<thead>
+					<tr>
+                        <th>No</th>
+						<th>Nama</th>
+						<th>Alamat</th>
+                        <th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="gudang, iterationStatus : ${gudangList}">
+						<td th:text="${iterationStatus.count}"> </td>
+						<td th:text="${gudang.namaGudang}"> </td>
+						<td th:text="${gudang.alamatGudang}"> </td>
+						<td>
+							<button type="submit" class="btn btn-sm" style="background-color: #03002C; color: white;">
+								<a th:href="@{/gudang/view(idGudang=${gudang.idGudang})}" style="color: white;">Lihat</a></button>
+							<button type="submit" class="btn btn-sm" style="background-color: #F5841A;  color: white;">Ubah</button>
+							<button type="submit" class="btn btn-sm" style="background-color:#BB0029;">
+							<a th:href="@{/gudang/hapus/} + ${gudang.idGudang}" style="color: white;">Hapus</a></button>
+						</td>
+					</tr>
+                </tbody>
+            </table>
+			    <button class="btn btn-lg" style="background-color: #7B3C59; border-color: #7B3C59; float: right; margin-bottom: 20px;">
+				<a th:href="@{/gudang/tambah}" style="color: white;">Tambah Gudang</a>
+			    </button>
+            </div>
+		</div>
+	</body>
+</html>

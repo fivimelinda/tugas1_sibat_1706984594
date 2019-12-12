@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>Cari</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragment :: navbar (brand='SIBAT')"></nav>
+		<div class="container-fluid col-sm-6" style= "border-style:ridge; margin-top: 20px; padding-bottom: 10px;">
+        <h3 style="background-color: #7B3C59 ; color: white; margin-top: 10px; margin-bottom: 10px; padding: 10px;">Cek Obat yang sudah expired di Gudang</h2>
+        <form th:action="@{/gudang/expired-obat}" th:object="${listGudang}" method="GET">
+        <div class="row" style="margin-top: 10px; padding-left: 10px;">
+                <label for="jenis" class="col-sm-3 col-form-label">Pilih Gudang</label>
+                <div class="col-sm-4">
+                    <select class="form-control" name="idGudang">
+                        <option th:each="target : ${listGudang}" th:value="${target.idGudang}" th:text="${target.namaGudang}"></option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="background-color:#BB0029; border-color: #BB0029;">Lihat</button>
+        </div>
+        </form>
+		</div>
+	</body>
+</html>
